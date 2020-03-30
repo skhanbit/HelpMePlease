@@ -1,12 +1,13 @@
 package com.hm.dao.db;
 
 import com.hm.beans.request.UserBean;
+import com.hm.beans.response.UserDetailsResp;
 
 public interface UserDAO 
 {
 	public void addUser(UserBean userBean);
 	
-	public UserBean getUser(String mobile);
+	public UserDetailsResp getUser(UserBean userBean);
 	
 	public void deleteUser(String mobile);
 	

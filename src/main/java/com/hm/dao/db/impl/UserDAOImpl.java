@@ -1,12 +1,23 @@
 package com.hm.dao.db.impl;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 import com.hm.beans.request.UserBean;
+import com.hm.beans.response.UserDetailsResp;
+import com.hm.dao.db.Queries;
 import com.hm.dao.db.UserDAO;
+import com.hm.exceptions.HMErrorCode;
+import com.hm.exceptions.HMException;
 
 public class UserDAOImpl implements UserDAO
 {
@@ -25,11 +36,27 @@ public class UserDAOImpl implements UserDAO
 	}
 
 	@Override
-	public UserBean getUser(String mobile) {
-		// TODO Auto-generated method stub
+	public UserDetailsResp getUser(UserBean userBean) 
+	{
+		UserDetailsResp dbUserBean = new UserDetailsResp();
+		try {
+			 getHmTemplate().query(Queries.getUsers(),new ResultSetExtractor<Object>() {
+
+				public Object extractData(ResultSet rs) throws SQLException, DataAccessException {
+
+					while (rs.next()) {
+						
+
+					}
+					return null;
+				}
+			});
+		}catch(DataAccessException e){
+			throw new HMException(HMErrorCode.DATABASE_ERROR, "Error-getUser{mobile :"+userBean.getMobileNumber()+"}", e);
+		}
 		return null;
 	}
-
+	
 	@Override
 	public void deleteUser(String mobile) {
 		// TODO Auto-generated method stub

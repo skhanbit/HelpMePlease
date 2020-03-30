@@ -5,6 +5,10 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.hm.beans.db.BaseBeanDb;
+import com.hm.exceptions.HMErrorCode;
+import com.hm.exceptions.HMErrorMsg;
+import com.hm.exceptions.HMException;
+import com.hm.utils.Helper;
 
 @JsonIgnoreProperties(ignoreUnknown=true)
 @JsonInclude(Include.NON_NULL)
@@ -50,6 +54,24 @@ public class UserBean extends BaseBeanDb
 	
 	@JsonProperty("organization_id")
 	private long organizationId;
+	
+	@JsonProperty("otp")
+	private String otp;
+	
+	
+	public void validate()
+	{
+		if( Helper.isNUllOrEmpty(mobileNumber) )
+		{
+			throw new HMException(HMErrorCode.EMPTY_STRING, HMErrorMsg.EMPTY_STRING + "::" + mobileNumber);
+		}
+		
+		if( Helper.isNUllOrEmpty(otp) )
+		{
+			throw new HMException(HMErrorCode.EMPTY_STRING, HMErrorMsg.EMPTY_STRING + "::" + otp);
+		}
+		
+	}
 
 	public String getMobileNumber() {
 		return mobileNumber;
@@ -161,6 +183,14 @@ public class UserBean extends BaseBeanDb
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public String getOtp() {
+		return otp;
+	}
+
+	public void setOtp(String otp) {
+		this.otp = otp;
 	}
 	
 	

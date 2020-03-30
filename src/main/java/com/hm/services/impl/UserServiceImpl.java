@@ -7,7 +7,7 @@ import com.hm.beans.request.UserBean;
 import com.hm.beans.response.HMError;
 import com.hm.beans.response.ResponseBean;
 import com.hm.beans.response.ResponseBuilder;
-import com.hm.beans.response.UserDetails;
+import com.hm.beans.response.UserDetailsResp;
 import com.hm.dao.db.UserDAO;
 import com.hm.exceptions.HMErrorUtil;
 import com.hm.exceptions.HMException;
@@ -21,17 +21,21 @@ public class UserServiceImpl implements UserService
 	UserDAO userDAO;
 
 	@Override
-	public ResponseBean getUser(UserBean requestBean) 
+	public ResponseBean getUser(String mobileNumber, String otp) 
 	{
-		
 		ResponseBuilder     builder = new ResponseBuilder();
 		HMError   error = new HMError();
-		UserDetails data = new UserDetails();
+		UserDetailsResp data = new UserDetailsResp();
 		try 
 		{
-			// Set response JSON data here
-//			data.setUserName("SOME_USER_NAME");
-//			data.setPassword("SOME_PASSWORD");
+			UserBean userBean = getUserRequestBean(mobileNumber, otp);
+			
+			//validate for inputs params
+			userBean.validate();
+		
+			// Fetch user Details from DB
+			userDAO.getUser(userBean);
+			
 
 		} catch (HMException e) {
 			LogUtils.error("error", e);
@@ -44,8 +48,16 @@ public class UserServiceImpl implements UserService
 		return builder.build();
 	}
 
+	private UserBean getUserRequestBean(String mobileNumber, String otp) {
+		UserBean userBean = new UserBean();
+		userBean.setMobileNumber(mobileNumber);
+		userBean.setOtp(otp);
+		return userBean;
+	}
+
 	@Override
-	public ResponseBean addUser(UserBean requestBean) {
+	public ResponseBean addUser(UserBean requestBean) 
+	{
 		// TODO Auto-generated method stub
 		return null;
 	}

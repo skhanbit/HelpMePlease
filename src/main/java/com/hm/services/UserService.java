@@ -11,6 +11,6 @@ public interface UserService
 	
 	ResponseBean deleteUser(UserBean requestBean);
 	
-	ResponseBean getUser(UserBean requestBean);
+	ResponseBean getUser(String mobileNumber, String otp);
 
 }
