@@ -1,7 +1,5 @@
 package com.hm.beans.db;
 
-import com.hm.beans.db.BaseBeanDb;
-
 public class HelpCategory extends BaseBeanDb
 {
 	private String name;

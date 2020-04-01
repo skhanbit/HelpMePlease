@@ -1,7 +1,7 @@
 package com.hm.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import com.hm.beans.request.UserBean;
 import com.hm.beans.response.HMError;
@@ -14,7 +14,7 @@ import com.hm.exceptions.HMException;
 import com.hm.services.UserService;
 import com.hm.utils.LogUtils;
 
-@Service
+@Component
 public class UserServiceImpl implements UserService 
 {
 	@Autowired

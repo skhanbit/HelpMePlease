@@ -8,7 +8,7 @@ import com.hm.beans.db.State;
 
 public interface LocaleDAO 
 {
-	public Country getCountry();
+	public List<Country> getCountry();
 		
 	public List<State> getStates(String countryId);
 		

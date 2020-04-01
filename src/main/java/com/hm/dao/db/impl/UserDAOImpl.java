@@ -2,8 +2,6 @@ package com.hm.dao.db.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -11,6 +9,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.stereotype.Component;
 
 import com.hm.beans.request.UserBean;
 import com.hm.beans.response.UserDetailsResp;
@@ -19,6 +18,7 @@ import com.hm.dao.db.UserDAO;
 import com.hm.exceptions.HMErrorCode;
 import com.hm.exceptions.HMException;
 
+@Component
 public class UserDAOImpl implements UserDAO
 {
 	@Autowired

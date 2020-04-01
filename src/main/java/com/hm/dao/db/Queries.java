@@ -14,20 +14,20 @@ public class Queries {
 	public static String getCountryMaster() 
 	{
 		return new StringBuilder().append(
-			"SELECT id,name from country").toString();
+			"select id,name from help_me_please.country").toString();
 	}
 	
 	public static String getStates() 
 	{
 		return new StringBuilder().append(
-			"SELECT id,name,country_id from state where country_id=?").toString();
+			"select id,name,country_id from help_me_please.state where country_id=?").toString();
 	}
 	
 	
 	public static String getCities() 
 	{
 		return new StringBuilder().append(
-			"SELECT id,name,state_id from city where state_id=?").toString();
+			"select id,name,state_id from help_me_please.city where state_id=?").toString();
 	}
 	
 	

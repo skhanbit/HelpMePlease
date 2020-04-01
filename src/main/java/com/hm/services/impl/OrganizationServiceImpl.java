@@ -1,14 +1,14 @@
 package com.hm.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import com.hm.beans.request.Organization;
 import com.hm.beans.response.ResponseBean;
 import com.hm.dao.db.OrganizationDAO;
 import com.hm.services.OrganizationService;
 
-@Service
+@Component
 public class OrganizationServiceImpl implements OrganizationService {
 
 	@Autowired

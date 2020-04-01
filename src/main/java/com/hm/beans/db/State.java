@@ -2,16 +2,21 @@ package com.hm.beans.db;
 
 import java.sql.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class State
 {
 	private long id;
 	
 	private String name;
 	
+	@JsonIgnore
 	private int countryId;
 	
+	@JsonIgnore
 	private Date creationDate;
 	
+	@JsonIgnore
 	private Date modificationDate;
 
 	public long getId() {

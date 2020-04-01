@@ -38,7 +38,7 @@ public class DbConfiguration
 		dataSource.setMaxIdle(Integer.valueOf(environment.getRequiredProperty("maxIdle")));
 		dataSource.setMinIdle(Integer.valueOf(environment.getRequiredProperty("minIdle")));
 		dataSource.setMaxWaitMillis(Integer.valueOf(environment.getRequiredProperty("maxWaitMillis")));
-		dataSource.setValidationQuery(environment.getRequiredProperty("scm_live_validationQuery"));
+		dataSource.setValidationQuery(environment.getRequiredProperty("validationQuery"));
 		
 		return dataSource;
 	}

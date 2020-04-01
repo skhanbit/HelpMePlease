@@ -1,5 +1,7 @@
 package com.hm.controller;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,23 +18,23 @@ public class LocaleController
 	@Autowired
 	LocaleService localeService;
 	
-	@GetMapping(value="/countries")
+	@GetMapping(value="/countries",produces = "application/json")
 	@ResponseBody
-	ResponseBean getCountries()
+	ResponseBean getCountries(HttpServletResponse response)
 	{
 		return localeService.getCountries();
 	}
 	
 	@GetMapping(value="/states")
 	@ResponseBody
-	ResponseBean getStates(@RequestParam @NotNull String countryId)
+	ResponseBean getStates(@RequestParam(name="countryId") @NotNull String countryId)
 	{
 		return localeService.getStates(countryId);
 	}
 	
 	@GetMapping(value="/cities")
 	@ResponseBody
-	ResponseBean getCities(@RequestParam @NotNull String stateId)
+	ResponseBean getCities(@RequestParam(name="stateId") @NotNull String stateId)
 	{
 		return localeService.getCities(stateId);
 	}

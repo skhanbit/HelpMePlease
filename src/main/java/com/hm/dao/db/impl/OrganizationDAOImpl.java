@@ -3,11 +3,13 @@ package com.hm.dao.db.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
 
 import com.hm.beans.request.Organization;
 import com.hm.beans.request.UserBean;
 import com.hm.dao.db.OrganizationDAO;
 
+@Component
 public class OrganizationDAOImpl implements OrganizationDAO {
 
 	@Autowired

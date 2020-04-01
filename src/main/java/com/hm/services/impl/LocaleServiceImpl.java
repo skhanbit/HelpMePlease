@@ -1,6 +1,7 @@
 package com.hm.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.hm.beans.response.CitiesResponse;
 import com.hm.beans.response.CountryResponse;
@@ -14,6 +15,7 @@ import com.hm.exceptions.HMException;
 import com.hm.services.LocaleService;
 import com.hm.utils.LogUtils;
 
+@Component
 public class LocaleServiceImpl implements LocaleService 
 {
 	@Autowired
@@ -45,6 +47,7 @@ public class LocaleServiceImpl implements LocaleService
 		StatesResponse data = new StatesResponse();
 		try 
 		{
+			data.setCountryId(Integer.valueOf(countryId));
 			data.setStateList( localeDAO.getStates(countryId) );
 		} catch (HMException e) {
 			LogUtils.error("error", e);
@@ -64,6 +67,7 @@ public class LocaleServiceImpl implements LocaleService
 		CitiesResponse data = new CitiesResponse();
 		try 
 		{
+			data.setStateId(Integer.valueOf(stateId));
 			data.setCityList( localeDAO.getCities(stateId) );
 		} catch (HMException e) {
 			LogUtils.error("error", e);

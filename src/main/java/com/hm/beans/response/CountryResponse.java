@@ -1,17 +1,20 @@
 package com.hm.beans.response;
 
+import java.util.List;
+
 import com.hm.beans.db.Country;
 
 public class CountryResponse implements BaseResponseBean  
 {
-	private Country country;
+	private List<Country> country;
 
-	public Country getCountry() {
+	public List<Country> getCountry() {
 		return country;
 	}
 
-	public void setCountry(Country country) {
+	public void setCountry(List<Country> country) {
 		this.country = country;
 	}
+
 
 }

@@ -16,6 +16,6 @@ public class ApplicationInitializer extends AbstractAnnotationConfigDispatcherSe
 
     @Override
     protected String[] getServletMappings() {
-        return new String[] { "/api/rs/service/*" };
+        return new String[] { "/*" };
     }
 }
